@@ -54,7 +54,10 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
-                        <Link to="/" className=""><Logo></Logo></Link>
+                        <div className="flex">
+                            <Link to="/" className="w-11 h-11 bg-slate-500"><Logo></Logo></Link>
+                            <h1 className="text-2xl font-bold relative top-4"> Mens <span className="text-fuchsia-900">Fashion</span></h1>
+                        </div>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="flex gap-3">
@@ -72,12 +75,12 @@ const Navbar = () => {
                                 user && <>
                                     <li>
                                         <NavLink
-                                            to="/info"
+                                            to="/addProduct"
                                             className={({ isActive, isPending }) =>
                                                 isPending ? "pending" : isActive ? "text-red-500 underline" : ""
                                             }
                                         >
-                                            Your Information
+                                            Add Product
                                         </NavLink>
                                     </li>
                                 </>
@@ -86,12 +89,12 @@ const Navbar = () => {
                                 user && <>
                                     <li>
                                         <NavLink
-                                            to="/dashboard"
+                                            to="/myCart"
                                             className={({ isActive, isPending }) =>
                                                 isPending ? "pending" : isActive ? "text-red-500 underline" : ""
                                             }
                                         >
-                                            Dashboard
+                                            My cart
                                         </NavLink>
                                     </li>
                                 </>

@@ -17,11 +17,11 @@ const MyRoute = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/product')
             },
             {
-                path: 'addProduct',
+                path: '/addProduct',
                 element: <AddProduct />
             },
             {
-                path: 'myCart',
+                path: '/myCart',
                 element: <MyCart />
             },
             {
