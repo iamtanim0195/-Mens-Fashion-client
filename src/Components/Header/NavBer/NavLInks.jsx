@@ -1,9 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
+import { useContext } from "react";
+import { AuthContext } from "../../../Hook/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => console.log("user logged out"))
+            .catch(error => console.error(error));
+    }
+
     return (
-        <div>
+        <div data-aos="fade-up">
             <nav>
                 <div className="navbar bg-base-100 ">
                     <div className="navbar-start mx-auto">
@@ -24,29 +34,29 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <NavLink
-                                        to="/addProduct"
+                                        to="/login"
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-red-500 underline" : ""
                                         }
                                     >
-                                        Add Product
+                                        Login
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
-                                        to="/myCart"
+                                        to="/statistics"
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-red-500 underline" : ""
                                         }
                                     >
-                                        My Cart
+                                        Statistics
                                     </NavLink>
                                 </li>
                             </ul>
                         </div>
                         <Link to="/" className=""><Logo></Logo></Link>
                     </div>
-                    <div className="navbar-end hidden lg:flex">
+                    <div className="navbar-center hidden lg:flex">
                         <ul className="flex gap-3">
                             <li>
                                 <NavLink
@@ -58,27 +68,67 @@ const Navbar = () => {
                                     Home
                                 </NavLink>
                             </li>
+                            {
+                                user && <>
+                                    <li>
+                                        <NavLink
+                                            to="/info"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-red-500 underline" : ""
+                                            }
+                                        >
+                                            Your Information
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
+                            {
+                                user && <>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-red-500 underline" : ""
+                                            }
+                                        >
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
                             <li>
                                 <NavLink
-                                    to="/addProduct"
+                                    to="/login"
                                     className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "text-red-500 underline" : ""
                                     }
                                 >
-                                    Add Product
+                                    Login
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
-                                    to="/myCart"
+                                    to="/registration"
                                     className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "text-red-500 underline" : ""
                                     }
                                 >
-                                    my Cart
+                                    Registration
                                 </NavLink>
                             </li>
                         </ul>
+                    </div>
+                    <div className="navbar-end">
+                        {user ? <>
+                            <span>{user.email}</span>
+                            <div className="avatar">
+                                <div className="w-7 mr-2 rounded-full">
+                                    <img src={`https://i.ibb.co/GsPJN0K/image.png`} />
+                                </div>
+                            </div>
+                            <button onClick={handleLogOut} className="btn btn-sm mr-2">Sign out</button>
+                        </> : <Link to={"/login"}><button className="btn btn-sm mr-2">Login</button></Link>
+                        }
                     </div>
                 </div>
             </nav>
