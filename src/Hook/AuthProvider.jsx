@@ -9,6 +9,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     onAuthStateChanged,
+    FacebookAuthProvider,
 
 } from "firebase/auth"
 import { useState } from "react";
@@ -16,52 +17,55 @@ import { useState } from "react";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
-
+// provider
 const googleProvider = new GoogleAuthProvider();
+const fbProvider = new FacebookAuthProvider();
 
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const googleSignIn = (value) => {
+    const googleSignIn = () => {
         return signInWithPopup(auth, googleProvider);
     }
-
-    const createUser=(email,password)=>{
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password)
+    const fbSignIn = () => {
+        return signInWithPopup(auth, fbProvider);
     }
 
-    const signIn = (email,password)=>{
+    const createUser = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const logOut = ()=>{
+    const signIn = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const logOut = () => {
         setLoading(true);
         return signOut(auth);
     }
-    useEffect(()=>{
-        const unSubscribe  =  onAuthStateChanged(auth, currnetUser =>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currnetUser => {
             console.log("observing current user", currnetUser);
             setUser(currnetUser);
             setLoading(false);
         });
-        return ()=>{
+        return () => {
             unSubscribe();
         }
-    },[])
+    }, [])
 
     const AuthInfo = {
         user,
         loading,
         googleSignIn,
+        fbSignIn,
         createUser,
         signIn,
         logOut
-        
-
     }
 
     return (

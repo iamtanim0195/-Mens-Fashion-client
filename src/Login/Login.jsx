@@ -3,10 +3,15 @@ import { AuthContext } from "../Hook/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { googleSignIn, signIn } = useContext(AuthContext);
+    const { googleSignIn, signIn, fbSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleGoogleSignIn = () => {
         googleSignIn().then(result => {
+            console.log(result.user);
+        })
+    }
+    const handleFbSignIn = () => {
+        fbSignIn().then(result => {
             console.log(result.user);
         })
     }
@@ -79,7 +84,12 @@ const Login = () => {
                                 >
                                     Sign in
                                 </button>
-                                <button onClick={handleGoogleSignIn} className="w-full text-white bg-red-800 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">sign with google</button>
+                                <button onClick={handleGoogleSignIn} className="w-full text-white bg-green-800 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    sign with google
+                                </button>
+                                <button onClick={handleFbSignIn} className="w-full text-white bg-blue-800 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    sign with Facebook
+                                </button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                     Don’t have an account yet?{" "}
                                     <Link

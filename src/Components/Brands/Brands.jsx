@@ -1,6 +1,6 @@
 const Brands = () => {
     return (
-        <div className="flex p-3 gap-2">
+        <div className="flex p-5 gap-2">
             <div>
                 <img
                     className="w-96 h-28"
