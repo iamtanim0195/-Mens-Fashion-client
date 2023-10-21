@@ -1,11 +1,12 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Slider from "./Slider";
+import { Link } from 'react-router-dom';
 const BrandUnder = () => {
     const brands = useLoaderData();
     const { brandName } = useParams();
 
     const matchingBrands = brands.filter((brand) => brand.brandName === brandName)
-    
+
     return (
         <div>
             <Slider />
@@ -21,13 +22,13 @@ const BrandUnder = () => {
                                     <h2 className="card-title">product Name: {brand.productName}</h2>
                                     <h2 className="card-title">brand Name: {brand.brandName}</h2>
                                     <h2 className="card-title">category: {brand.category}</h2>
-                                    <h2 className="card-title">short Description: {brand.shortDescription}</h2>
                                     <h2 className="card-title">price: {brand.price}</h2>
                                     <h2 className="card-title">rating: {brand.rating}</h2>
                                     <div className="card-actions">
-                                        <button className="btn btn-primary">Buy Now</button>
+                                        <Link to={`/brand/${brand.brandName}/details/${brand._id}`}>
+                                            <button className="btn btn-primary">Details button</button>
+                                        </Link>
                                         <button className="btn btn-primary">Update button</button>
-
                                     </div>
                                 </div>
                             </div>
