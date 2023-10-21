@@ -12,10 +12,10 @@ const Home = () => {
 
     return (
         <div>
-            <Banner/>
-            <Brands/>
-            <AboutUs/>
-            <ContactUs/>
+            <Banner />
+            <Brands />
+            <AboutUs />
+            <ContactUs />
             <h1>{products.length}</h1>
             {
                 products.map(product => <ProductCard
@@ -23,8 +23,8 @@ const Home = () => {
                     product={product}
                 ></ProductCard>)
             }
-            <Footer/>
-            
+            <Footer />
+
         </div>
     )
 }

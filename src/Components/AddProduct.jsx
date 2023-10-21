@@ -61,13 +61,21 @@ const AddProduct = () => {
                                 />
                             </div>
                             <div className="join">
-                                <p className="btn bg-pink-600 text-white hover:bg-purple-600 join-item rounded-r-full">Brand name</p>
-                                <input
+                                <p className=" btn bg-pink-600 text-white hover:bg-purple-600 join-item rounded-r-full">Brand Name</p>
+                                <select
                                     name="brandName"
-                                    type="text"
-                                    className="w-full input input-bordered join-item"
-                                    placeholder="Brand name"
-                                />
+                                    id="brandName"
+                                    className=" w-full input input-bordered join-item"
+                                >
+                                    <option value="brandName">Select Brand Name</option>
+                                    <option value="Nike">Nike</option>
+                                    <option value="Adidas">Adidas</option>
+                                    <option value="Levis">Levis</option>
+                                    <option value="H&M">H&M</option>
+                                    <option value="Gucci">Gucci</option>
+                                    <option value="Zara">Zara</option>
+
+                                </select>
                             </div>
                         </div>
                         <div className="flex flex-col gap-3">
