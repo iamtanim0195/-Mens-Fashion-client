@@ -5,23 +5,32 @@ const BrandUnder = () => {
     const { brandName } = useParams();
 
     const matchingBrands = brands.filter((brand) => brand.brandName === brandName)
-    console.log(matchingBrands);
+    
     return (
         <div>
-            <Slider/>
+            <Slider />
             {matchingBrands.length === 0 ? (
                 <p className="text-4xl text-red-500 text-center">No brands matching {brandName} found</p>
             ) : (
                 <div>
-                    <h2>Brands matching {brandName}</h2>
-                    <ul>
+                    <ul className="md:grid md:grid-cols-2">
                         {matchingBrands.map((brand, index) => (
-                            <li key={index}>
-                                <h3>{brand.brandName}</h3>
-                                <p>Category: {brand.category}</p>
-                                <p>Price: {brand.price}</p>
-                                {/* Add more information as needed */}
-                            </li>
+                            <div key={index} className="card w-96 bg-base-100 shadow-xl">
+                                <figure><img src={brand.image} alt="Shoes" /></figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">product Name: {brand.productName}</h2>
+                                    <h2 className="card-title">brand Name: {brand.brandName}</h2>
+                                    <h2 className="card-title">category: {brand.category}</h2>
+                                    <h2 className="card-title">short Description: {brand.shortDescription}</h2>
+                                    <h2 className="card-title">price: {brand.price}</h2>
+                                    <h2 className="card-title">rating: {brand.rating}</h2>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary">Buy Now</button>
+                                        <button className="btn btn-primary">Update button</button>
+
+                                    </div>
+                                </div>
+                            </div>
                         ))}
                     </ul>
                 </div>
