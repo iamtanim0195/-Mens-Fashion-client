@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast"
 const Register = () => {
     const { createUser } = useContext(AuthContext);
     const [email, setEmail] = useState("");
+    const [displayName, setDisplayName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [showPass, setShowPass] = useState(false);
@@ -16,8 +17,8 @@ const Register = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const name = e.target.name.value;
-        const photo = e.target.img.value;
+        const displayName = e.target.displayName.value;
+        const photoURL = e.target.photoURL.value;
 
         //validation
 
@@ -35,23 +36,36 @@ const Register = () => {
 
 
         //create user
-        createUser(email, password)
-            .then(result => { console.log(result.user) })
-            .catch(error => { console.log(error) })
-
-
+        createUser(email, password, displayName, photoURL)
+            .then(result => {
+                console.log(result.user)
+                // user send in database
+                const createAt = result.user?.metaData?.creationTime;
+                const user = { email, displayName, photoURL, createAt:createAt };
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/Json' },
+                    body: JSON.stringify(user)
+                }).then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+            })
 
     }
+
+
     return (
         <div>
             <form onSubmit={handleRegistration} className="mx-auto md:w-1/2 p-5 flex flex-col gap-1 ">
                 <input
-
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    name="displayName"
                     placeholder='name'
-                    className="input input-bordered input-primary w-full " type="text" name="name" required /><br />
+                    className="input input-bordered input-primary w-full " type="text" required /><br />
                 <input
 
-                    placeholder="photo" className="input input-bordered input-primary w-full " type="text" name="img" required /><br />
+                    placeholder="photo" className="input input-bordered input-primary w-full " type="text" name="photoURL" required /><br />
 
                 <input
                     onChange={(e) => setEmail(e.target.value)}

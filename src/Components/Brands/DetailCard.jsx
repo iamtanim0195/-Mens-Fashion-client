@@ -1,6 +1,20 @@
+import toast from "react-hot-toast";
 
 const DetailCard = ({ detail }) => {
-    const { productName, category, price, rating, shortDescription, brandName, image } = detail || {};
+    const {  productName, category, price, rating, shortDescription, brandName, image } = detail || {};
+
+    const handleUpdate = () => {
+        fetch(`http://localhost:5000/userAddToCart`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/Json' },
+            body: JSON.stringify(detail)
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Successfully toasted!')
+            })
+    };
+
     return (
         <div>
 
@@ -19,7 +33,9 @@ const DetailCard = ({ detail }) => {
                     <h2 className="card-title">price: {price}</h2>
                     <h2 className="card-title">rating: {rating}</h2>
                     <h2 className="card-title">short Description: {shortDescription}</h2>
-                    <button className="btn btn-primary">Add to Cart</button>
+
+                    <button onClick={handleUpdate} className="btn btn-primary">Add to Cart</button>
+
                 </div>
             </div>
 
