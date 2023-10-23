@@ -4,14 +4,14 @@ const DetailCard = ({ detail }) => {
     const {  productName, category, price, rating, shortDescription, brandName, image } = detail || {};
 
     const handleUpdate = () => {
-        fetch(`http://localhost:5000/userAddToCart`, {
+        fetch(`http://localhost:5000/cart`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/Json' },
             body: JSON.stringify(detail)
         }).then(res => res.json())
             .then(data => {
                 console.log(data)
-                toast.success('Successfully toasted!')
+                toast.success('Successfully add to cart!')
             })
     };
 
@@ -27,7 +27,7 @@ const DetailCard = ({ detail }) => {
                     />
                 </div>
                 <div className="p-6">
-                    <h2 className="card-title">product Name: {productName}</h2>
+                <h2 className="card-title">product Name: {productName}</h2>
                     <h2 className="card-title">brand Name: {brandName}</h2>
                     <h2 className="card-title">category: {category}</h2>
                     <h2 className="card-title">price: {price}</h2>
