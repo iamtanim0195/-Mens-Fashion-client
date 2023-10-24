@@ -9,16 +9,19 @@ import BrandUnder from "../Components/Brands/BrandUnder";
 import BrandDetails from "../Components/Brands/BrandDetails";
 import PrivateRoute from "./PrivateRoute";
 import Update from "../Components/Brands/Update";
+import ErrorPage from "../Components/ErrPage";
 
 const MyRoute = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
                 element: <Home />,
                 loader: () => fetch('http://localhost:5000/product')
+                
             },
             {
                 path: '/addProduct',
