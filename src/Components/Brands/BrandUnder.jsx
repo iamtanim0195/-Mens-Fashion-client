@@ -28,7 +28,9 @@ const BrandUnder = () => {
                                         <Link to={`/brand/${brand.brandName}/details/${brand._id}`}>
                                             <button className="btn btn-primary">Details button</button>
                                         </Link>
-                                        <button className="btn btn-primary">Update button</button>
+                                        <Link to={`/product/${brand._id}`}>
+                                            <button className="btn btn-primary">Update button</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

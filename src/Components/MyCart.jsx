@@ -42,7 +42,6 @@ const MyCart = () => {
                                 // Reload the page after the user confirms the deletion
                                 location.reload();
                             });
-
                         }
 
                     })
