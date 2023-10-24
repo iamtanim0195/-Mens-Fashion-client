@@ -1,8 +1,13 @@
-# React + Vite
+# my project
+1 my project is a Fashion and Apparel website
+2 you can add product for web side
+3 you can update product
+4 you can delete product
+5 you can add product in my cart
+6 it is work with mongoDB
+7 it has a 404 page (not found page)
+8 it has a dark/light theme toggle for the home page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1github client-side repository :https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-iamtanim0195
+2 github server-side repository: https://github.com/programming-hero-web-course-4/b8a10-brandshop-server-side-iamtanim0195
+3 live website link: https://653800f215bb582809f4ffeb--frolicking-kitten-585bc2.netlify.app/

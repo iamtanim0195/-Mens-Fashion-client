@@ -20,8 +20,8 @@ const MyRoute = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/product')
-                
+                loader: () => fetch('https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/product')
+
             },
             {
                 path: '/addProduct',
@@ -30,7 +30,7 @@ const MyRoute = createBrowserRouter([
             {
                 path: '/myCart',
                 element: <PrivateRoute><MyCart /></PrivateRoute>,
-                loader: () => fetch(`http://localhost:5000/cart`)
+                loader: () => fetch(`https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/cart`)
             },
             {
                 path: "/login",
@@ -42,18 +42,18 @@ const MyRoute = createBrowserRouter([
             },
             {
                 path: "/brand/:brandName",
-                loader: ({ params }) => fetch(`http://localhost:5000/product`),
+                loader: ({ params }) => fetch(`https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/product`),
                 element: <BrandUnder />
             },
             {
                 path: "/brand/:brandName/details/:_id",
-                loader: ({ params }) => fetch(`http://localhost:5000/product`),
+                loader: ({ params }) => fetch(`https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/product`),
                 element: <PrivateRoute><BrandDetails /></PrivateRoute>
             },
             {
                 path: '/product/:id',
                 element: <PrivateRoute><Update /></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/product/${params.id}`)
             }
 
         ]

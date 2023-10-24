@@ -19,7 +19,7 @@ const AddProduct = () => {
         console.log(newProduct)
 
         // send data to server
-        fetch('http://localhost:5000/product', {
+        fetch('https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/product', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct)

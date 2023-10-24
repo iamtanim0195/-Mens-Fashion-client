@@ -19,7 +19,7 @@ const MyCart = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/cart/${_id}`, {
+                fetch(`https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/cart/${_id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

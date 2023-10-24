@@ -19,18 +19,18 @@ const Update = () => {
 
         const updatedProduct = { productName, category, price, rating, shortDescription, brandName, image }
 
-        fetch(`http://localhost:5000/product/${updateProduct._id}`,{
+        fetch(`https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/product/${updateProduct._id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( updatedProduct)
+            body: JSON.stringify(updatedProduct)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if (data.modifiedCount > 0) {
-                Swal.fire('update successful !')
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    Swal.fire('update successful !')
+                }
+            })
 
     };
     return (
@@ -38,7 +38,7 @@ const Update = () => {
             <>
                 <div className="mt-5 h-screen flex flex-col justify-center items-center">
                     <h2 className=" text-center text-2xl font-semibold">Update Product</h2>
-                    <form onSubmit={handleUpdate}  className="w-[80vw]">
+                    <form onSubmit={handleUpdate} className="w-[80vw]">
                         <div className="flex flex-col md:flex-row gap-3 justify-between">
                             <div className="flex flex-col gap-3">
                                 <div className="join">

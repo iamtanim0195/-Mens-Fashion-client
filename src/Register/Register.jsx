@@ -41,8 +41,8 @@ const Register = () => {
                 console.log(result.user)
                 // user send in database
                 const createAt = result.user?.metaData?.creationTime;
-                const user = { email, displayName, photoURL, createAt:createAt };
-                fetch('http://localhost:5000/user', {
+                const user = { email, displayName, photoURL, createAt: createAt };
+                fetch('https://project-10-back-55gngcex5-tanims-projects-82b1e941.vercel.app/user', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/Json' },
                     body: JSON.stringify(user)
