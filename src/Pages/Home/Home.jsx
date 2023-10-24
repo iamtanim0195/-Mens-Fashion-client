@@ -16,13 +16,6 @@ const Home = () => {
             <Brands />
             <AboutUs />
             <ContactUs />
-            <h1>{products.length}</h1>
-            {
-                products.map(product => <ProductCard
-                    key={product._id}
-                    product={product}
-                ></ProductCard>)
-            }
             <Footer />
 
         </div>
