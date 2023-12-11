@@ -8,6 +8,6 @@
 7 it has a 404 page (not found page)
 8 it has a dark/light theme toggle for the home page
 
-1github client-side repository :https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-iamtanim0195
+1github client-side repository :https://github.com/iamtanim0195/-Mens-Fashion-client
 2 github server-side repository: https://github.com/programming-hero-web-course-4/b8a10-brandshop-server-side-iamtanim0195
 3 live website link: https://653800f215bb582809f4ffeb--frolicking-kitten-585bc2.netlify.app/
